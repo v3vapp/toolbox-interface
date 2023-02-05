@@ -4,7 +4,8 @@ import Head from 'next/head'
 
 const FileUpload = () => {
 
-    const endpoint = "https://amazon-system-image-i7cgebzc3q-uc.a.run.app"
+    // const endpoint = "https://amazon-system-image-i7cgebzc3q-uc.a.run.app"
+    const endpoint = "//amazon-system-image-i7cgebzc3q-uc.a.run.app"
 
     const [file1, setFile1] = useState(null);
     const [file2, setFile2] = useState(null);
@@ -22,7 +23,7 @@ const FileUpload = () => {
         formData.append("file1", file1);
         formData.append("file2", file2);
 
-        axios.post(`${endpoint}/upload/`, formData, {
+        axios.post(`${endpoint}/upload`, formData, {
         headers: {
             "Content-Type": "multipart/form-data"
         }
@@ -35,7 +36,7 @@ const FileUpload = () => {
             link.setAttribute('download', filename);
             document.body.appendChild(link);
             link.click();
-            axios.get(`${endpoint}/clear/`)
+            axios.get(`${endpoint}/clear`)
             .then(() => {
                 console.log('Clear success');
             })
